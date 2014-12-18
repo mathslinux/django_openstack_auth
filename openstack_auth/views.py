@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import logging
+import time
 
 import django
 from django.conf import settings
@@ -102,6 +103,7 @@ def login(request, template_name=None, extra_context=None, **kwargs):
         region_name = regions.get(region)
         request.session['region_endpoint'] = region
         request.session['region_name'] = region_name
+        request.session['last_activity'] = int(time.time())
     return res
 
 
